@@ -158,7 +158,7 @@ chunk_size = 1000
 
 df_geolocation_filtered = pd.DataFrame(columns=geolocation_cols)
 
-for chunk in pd.read_csv('https://raw.githubusercontent.com/ariqluth/codebatch_1/main/dataset/dataset/geolocation_dataset.csv', usecols=geolocation_cols, chunksize=chunk_size):
+for chunk in pd.read_csv('https://raw.githubusercontent.com/ariqluth/codebatch_1/main/dataset/geolocation_dataset.csv', usecols=geolocation_cols, chunksize=chunk_size):
     filtered_chunk = chunk[chunk['geolocation_state'].isin(required_states)]
     df_geolocation_filtered = pd.concat([df_geolocation_filtered, filtered_chunk], ignore_index=True)
     
