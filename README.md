@@ -21,3 +21,8 @@ pip install -r requirements.txt
 cd dashboard
 streamlit run dashboard.py
 ```
+
+## url 
+```
+https://ecommerceariqluth.streamlit.app/
+```
