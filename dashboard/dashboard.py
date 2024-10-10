@@ -4,8 +4,10 @@ import matplotlib.image as mpimg
 import seaborn as sns
 import streamlit as st
 import plotly.express as px
+import urllib
+import PIL.Image
 import plotly.graph_objects as go
-
+import numpy as np
 with st.sidebar:
    
     st.image("https://avatars.githubusercontent.com/u/17227515?v=4", use_column_width=True)
@@ -165,8 +167,12 @@ for chunk in pd.read_csv('https://raw.githubusercontent.com/ariqluth/codebatch_1
     if df_geolocation_filtered['geolocation_state'].nunique() >= len(required_states):
         break
 
+url = 'https://raw.githubusercontent.com/ariqluth/codebatch_1/main/brazil-map.jpeg'
+with urllib.request.urlopen(url) as img_url:
+    brazil_img = PIL.Image.open(img_url)
 
-brazil = mpimg.imread('https://raw.githubusercontent.com/ariqluth/codebatch_1/main/brazil-map.jpeg')
+# Konversi gambar menjadi array numpy
+brazil = np.array(brazil_img)
 
 lng_min, lng_max = -73.98283055, -33.75116944  
 lat_min, lat_max = -33.8, 5.4
