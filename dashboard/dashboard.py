@@ -78,7 +78,8 @@ st.divider()
 
 st.title(" Analisis Tren Penjualan Bulanan")
 
-df_real_tengkulak = pd.read_csv('../df_real_tengkulak.csv')
+url = "https://raw.githubusercontent.com/ariqluth/codebatch_1/main/df_real_tengkulak.csv"
+df_real_tengkulak = pd.read_csv(url)
 
 df_real_tengkulak['order_purchase_timestamp'] = pd.to_datetime(df_real_tengkulak['order_purchase_timestamp'])
 
@@ -157,7 +158,7 @@ chunk_size = 1000
 
 df_geolocation_filtered = pd.DataFrame(columns=geolocation_cols)
 
-for chunk in pd.read_csv('../dataset/geolocation_dataset.csv', usecols=geolocation_cols, chunksize=chunk_size):
+for chunk in pd.read_csv('https://raw.githubusercontent.com/ariqluth/codebatch_1/main/dataset/dataset/geolocation_dataset.csv', usecols=geolocation_cols, chunksize=chunk_size):
     filtered_chunk = chunk[chunk['geolocation_state'].isin(required_states)]
     df_geolocation_filtered = pd.concat([df_geolocation_filtered, filtered_chunk], ignore_index=True)
     
@@ -165,7 +166,7 @@ for chunk in pd.read_csv('../dataset/geolocation_dataset.csv', usecols=geolocati
         break
 
 
-brazil = mpimg.imread('../brazil-map.jpeg')
+brazil = mpimg.imread('https://raw.githubusercontent.com/ariqluth/codebatch_1/main/brazil-map.jpeg')
 
 lng_min, lng_max = -73.98283055, -33.75116944  
 lat_min, lat_max = -33.8, 5.4
